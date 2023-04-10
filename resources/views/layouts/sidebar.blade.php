@@ -52,7 +52,7 @@
 
           <li class="nav-header">Pasien</li>
           <li class="nav-item">
-            <a href="{{ url('/') }}" class="nav-link">
+            <a href="{{ url('/pasien') }}" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>Data Pasien</p>
             </a>
