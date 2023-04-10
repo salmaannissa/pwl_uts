@@ -10,7 +10,7 @@
             <br>
         </div>
         <div class="card-body">
-            <a href="{{url('/dokter/create')}}" class="btn btn-sm btn-success my-2">
+            <a href="{{url('/pasien/create')}}" class="btn btn-sm btn-success my-2">
                 Tambah Data
             </a>
             <table class="table table-striped table-bordered">

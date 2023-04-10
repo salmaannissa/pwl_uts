@@ -28,7 +28,8 @@ class PasienController extends Controller
      */
     public function create()
     {
-        //
+        return view('pasien.create_pasien')
+            ->with('url_form', url('/pasien'));
     }
 
     /**
@@ -39,7 +40,22 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode_pasien'=>'required|string|max:10|unique:pasien,kode_pasien',
+            'nama_pasien'=>'required|string|max:50',
+            'jk'=>'required|in:L,P',
+            'poli'=>'required|string|max:50',
+            'kode_dokter'=>'required|string|max:10',
+            'keluhan'=>'required|string|max:255',
+            'diagnosa'=>'required|string|max:255',
+            'nama_wali'=>'required|string|max:50',
+            'hp_wali'=>'required|digits_between:6,15',
+            'alamat'=>'required|string|max:255'
+        ]);
+
+        $data = PasienModel::create($request->except(['_token']));
+        return redirect('pasien')
+            ->with('success', 'Data Pasien Berhasil Ditambahkan');
     }
 
     /**
@@ -59,9 +75,12 @@ class PasienController extends Controller
      * @param  \App\Models\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function edit(PasienModel $pasien)
+    public function edit($id)
     {
-        //
+        $pasien = PasienModel::find($id);
+        return view('pasien.create_pasien')
+            ->with('ps', $pasien)
+            ->with('url_form', url('/pasien/'.$id));
     }
 
     /**
@@ -71,9 +90,24 @@ class PasienController extends Controller
      * @param  \App\Models\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PasienModel $pasien)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'kode_pasien'=>'required|string|max:10|unique:pasien,kode_pasien,'.$id,
+            'nama_pasien'=>'required|string|max:50',
+            'jk'=>'required|in:L,P',
+            'poli'=>'required|string|max:50',
+            'kode_dokter'=>'required|string|max:10',
+            'keluhan'=>'required|string|max:255',
+            'diagnosa'=>'required|string|max:255',
+            'nama_wali'=>'required|string|max:50',
+            'hp_wali'=>'required|digits_between:6,15',
+            'alamat'=>'required|string|max:255'
+        ]);
+
+        $data = PasienModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('pasien')
+            ->with('success', 'Data Pasien Berhasil Ditambahkan');
     }
 
     /**
@@ -82,8 +116,10 @@ class PasienController extends Controller
      * @param  \App\Models\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PasienModel $pasien)
+    public function destroy($id)
     {
-        //
+        PasienModel::where('id', '=', $id)->delete();
+        return redirect('pasien')
+            ->with('success', 'Mahasiswa Berhasil Dihapus');
     }
 }
