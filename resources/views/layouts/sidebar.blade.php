@@ -44,7 +44,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/') }}" class="nav-link">
+            <a href="{{ url('/jadwal') }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p> Jadwal Praktek </p>
             </a>
