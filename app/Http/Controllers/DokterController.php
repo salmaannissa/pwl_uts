@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokter;
 use App\Http\Controllers\Controller;
+use App\Models\DokterModel;
 use Illuminate\Http\Request;
 
 class DokterController extends Controller
@@ -15,7 +16,9 @@ class DokterController extends Controller
      */
     public function index()
     {
-        //
+        $dk = DokterModel::all();
+        return view('dokter.dokter')
+            ->with('dk', $dk);
     }
 
     /**
@@ -45,7 +48,7 @@ class DokterController extends Controller
      * @param  \App\Models\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function show(Dokter $dokter)
+    public function show(DokterModel $dokter)
     {
         //
     }
@@ -56,7 +59,7 @@ class DokterController extends Controller
      * @param  \App\Models\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dokter $dokter)
+    public function edit(DokterModel $dokter)
     {
         //
     }
@@ -68,7 +71,7 @@ class DokterController extends Controller
      * @param  \App\Models\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dokter $dokter)
+    public function update(Request $request, DokterModel $dokter)
     {
         //
     }
@@ -79,7 +82,7 @@ class DokterController extends Controller
      * @param  \App\Models\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dokter $dokter)
+    public function destroy(DokterModel $dokter)
     {
         //
     }

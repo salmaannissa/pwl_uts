@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DokterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +22,12 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
-
+Route::get('/', [DashboardController::class, 'index']);
+Route::resource('/dokter', DokterController::class)->parameter('dokter', 'id');
 Auth::routes();
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::middleware(['auth'])->group(function(){
-  Route::get('/', [DashboardController::class, 'index']);
+  
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

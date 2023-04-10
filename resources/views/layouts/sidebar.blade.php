@@ -38,7 +38,7 @@
 
           <li class="nav-header">Dokter</li>
           <li class="nav-item">
-            <a href="{{ url('/') }}" class="nav-link">
+            <a href="{{ url('/dokter') }}" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>Data Dokter</p>
             </a>
