@@ -6,7 +6,7 @@
     <!-- Default Box-->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"> <b> Data Dokter Rumah Sakit Bhakti Wijaya </b> </h3>
+            <h3 class="card-title"> <b> Data Pasien Rumah Sakit Bhakti Wijaya </b> </h3>
             <br>
         </div>
         <div class="card-body">
@@ -17,30 +17,39 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Kode Pasien</th>
+                        <th>Nama Pasien</th>
+                        <th>JK</th>
+                        <th>Poli</th>
                         <th>Kode Dokter</th>
-                        <th>Nama Dokter</th>
-                        <th>Spesialis</th>
+                        <th>Keluhan</th>
+                        <th>Diagnosa</th>
+                        <th>Nama Wali</th>
                         <th>No. HP</th>
                         <th>Alamat</th>
-                        <th>Jenis Kelamin</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if($dk->count() > 0)
-                        @foreach($dk as $i => $m)
+                    @if($ps->count() > 0)
+                        @foreach($ps as $i => $m)
                             <tr>
                                 <td>{{++$i}}</td>
-                                <td>{{$m->kode_dokter}}</td>
-                                <td>{{$m->nama_dokter}}</td>
-                                <td>{{$m->spesialis}}</td>
-                                <td>{{$m->hp}}</td>
-                                <td>{{$m->alamat}}</td>
+                                <td>{{$m->kode_pasien}}</td>
+                                <td>{{$m->nama_pasien}}</td>
                                 <td>{{$m->jk}}</td>
+                                <td>{{$m->poli}}</td>
+                                <td>{{$m->kode_dokter}}</td>
+                                <td>{{$m->keluhan}}</td>
+                                <td>{{$m->diagnosa}}</td>
+                                <td>{{$m->nama_wali}}</td>
+                                <td>{{$m->hp_wali}}</td>
+                                <td>{{$m->alamat}}</td>
+                                
                                 <td>
-                                    <a href="{{url('/dokter/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="{{url('/pasien/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
 
-                                    <form method="POST" action="{{url('/dokter/'.$m->id)}}">
+                                    <form method="POST" action="{{url('/pasien/'.$m->id)}}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -50,7 +59,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="8" class="text-center">Data tidak ada</td>
+                            <td colspan="12" class="text-center">Data tidak ada</td>
                         </tr>
                     @endif
                 </tbody>

@@ -28,7 +28,8 @@ class DokterController extends Controller
      */
     public function create()
     {
-        //
+        return view('dokter.create_dokter')
+            ->with('url_form', url('/dokter'));
     }
 
     /**
@@ -39,7 +40,18 @@ class DokterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode_dokter'=>'required|string|max:10|unique:dokter,kode_dokter',
+            'nama_dokter'=>'required|string|max:50',
+            'spesialis'=>'required|string|max:50',
+            'hp'=>'required|digits_between:6,15',
+            'alamat'=>'required|string|max:255',
+            'jk'=>'required|in:L,P',
+        ]);
+
+        $data = DokterModel::create($request->except(['_token']));
+        return redirect('dokter')
+            ->with('success', 'Data Dokter Berhasil Ditambahkan');
     }
 
     /**
@@ -59,9 +71,12 @@ class DokterController extends Controller
      * @param  \App\Models\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function edit(DokterModel $dokter)
+    public function edit($dk)
     {
-        //
+        $dokter = DokterModel::find($dk);
+        return view('dokter.create_dokter')
+            ->with('dk', $dokter)
+            ->with('url_form', url('/dokter/'.$dk));
     }
 
     /**
@@ -71,9 +86,20 @@ class DokterController extends Controller
      * @param  \App\Models\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DokterModel $dokter)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'kode_dokter'=>'required|string|max:10|unique:dokter,kode_dokter,'.$id,
+            'nama_dokter'=>'required|string|max:50',
+            'spesialis'=>'required|string|max:50',
+            'hp'=>'required|digits_between:6,15',
+            'alamat'=>'required|string|max:255',
+            'jk'=>'required|in:L,P',
+        ]);
+
+        $data = DokterModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('dokter')
+            ->with('success', 'Data Dokter Berhasil Ditambahkan');
     }
 
     /**
@@ -82,8 +108,10 @@ class DokterController extends Controller
      * @param  \App\Models\Dokter  $dokter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DokterModel $dokter)
+    public function destroy($id)
     {
-        //
+        DokterModel::where('id', '=', $id)->delete();
+        return redirect('dokter')
+            ->with('success', 'Mahasiswa Berhasil Dihapus');
     }
 }
