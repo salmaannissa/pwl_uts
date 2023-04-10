@@ -28,7 +28,8 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+        return view('dokter.create_jadwal')
+            ->with('url_form', url('/jadwal'));
     }
 
     /**
@@ -39,7 +40,16 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode_jadwal'=>'required|string|max:10|unique:jadwal,kode_jadwal',
+            'hari'=>'required|string|max:10',
+            'jam'=>'required|string|max:20',
+            'kode_dokter'=>'required|string|max:10'
+        ]);
+
+        $data = JadwalModel::create($request->except(['_token']));
+        return redirect('jadwal')
+            ->with('success', 'Data Pasien Berhasil Ditambahkan');
     }
 
     /**
@@ -59,9 +69,12 @@ class JadwalController extends Controller
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function edit(JadwalModel $jadwal)
+    public function edit($id)
     {
-        //
+        $jadwal = JadwalModel::find($id);
+        return view('dokter.create_jadwal')
+            ->with('jdw', $jadwal)
+            ->with('url_form', url('/jadwal/'.$id));
     }
 
     /**
@@ -71,9 +84,18 @@ class JadwalController extends Controller
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JadwalModel $jadwal)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'kode_jadwal'=>'required|string|max:10|unique:jadwal,kode_jadwal,'.$id,
+            'hari'=>'required|string|max:10',
+            'jam'=>'required|string|max:20',
+            'kode_dokter'=>'required|string|max:10'
+        ]);
+
+        $data = JadwalModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('jadwal')
+            ->with('success', 'Data Pasien Berhasil Ditambahkan');
     }
 
     /**
@@ -82,8 +104,10 @@ class JadwalController extends Controller
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JadwalModel $jadwal)
+    public function destroy($id)
     {
-        //
+        JadwalModel::where('id', '=', $id)->delete();
+        return redirect('jadwal')
+            ->with('success', 'Mahasiswa Berhasil Dihapus');
     }
 }

@@ -21,6 +21,7 @@
                         <th>Hari</th>
                         <th>Jam</th>
                         <th>Kode Dokter</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +46,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="5" class="text-center">Data tidak ada</td>
+                            <td colspan="6" class="text-center">Data tidak ada</td>
                         </tr>
                     @endif
                 </tbody>

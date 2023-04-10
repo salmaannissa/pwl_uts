@@ -9,4 +9,10 @@ class JadwalModel extends Model
 {
     use HasFactory;
     protected $table = 'jadwal';
+    protected $fillable = [
+        'kode_dokter',
+        'hari',
+        'jam',
+        'kode_jadwal'
+    ];
 }
