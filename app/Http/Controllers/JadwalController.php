@@ -16,7 +16,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jdw = JadwalModel::all();
+        $jdw = JadwalModel::paginate(5);
         return view('dokter.jadwal')
             ->with('jdw', $jdw);
     }
