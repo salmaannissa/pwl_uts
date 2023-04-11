@@ -16,7 +16,22 @@ class PasienController extends Controller
      */
     public function index()
     {
-        $ps = PasienModel::paginate(5);
+        if(\Illuminate\Support\Facades\Request::get('query') !== null){
+            $query = \Illuminate\Support\Facades\Request::get('query');
+            $ps = PasienModel::where('kode_pasien', 'LIKE', '%'.$query.'%')
+            ->orWhere('nama_pasien', 'LIKE', '%'.$query.'%')
+            ->orWhere('jk', 'LIKE', '%'.$query.'%')
+            ->orWhere('poli', 'LIKE', '%'.$query.'%')
+            ->orWhere('kode_dokter', 'LIKE', '%'.$query.'%')
+            ->orWhere('keluhan', 'LIKE', '%'.$query.'%')
+            ->orWhere('diagnosa', 'LIKE', '%'.$query.'%')
+            ->orWhere('nama_wali', 'LIKE', '%'.$query.'%')
+            ->orWhere('hp_wali', 'LIKE', '%'.$query.'%')
+            ->orWhere('alamat', 'LIKE', '%'.$query.'%')
+            ->paginate(5);
+        } else {
+            $ps = PasienModel::paginate(5);
+        }
         return view('pasien.pasien')
             ->with('ps', $ps);
     }

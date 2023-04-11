@@ -34,7 +34,7 @@
                 @endforeach
                 </ul>
             @else
-            <p>Tidak ada hasil pencarian untuk "{{ $query }}".</p>
+                <p>Tidak ada hasil pencarian untuk "{{ $query }}".</p>
             @endif --}}
             <table class="table table-striped table-bordered">
                 <thead>
