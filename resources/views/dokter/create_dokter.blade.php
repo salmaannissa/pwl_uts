@@ -43,7 +43,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label>alamat</label>
+                <label>Alamat</label>
                 <input class="form-control @error('alamat') is-invalid @enderror" value="{{ isset($dk)? $dk->alamat :old('alamat') }}" name="alamat" type="text"/>
                 @error('alamat')
                   <span class="error invalid-feedback">{{ $message }} </span>

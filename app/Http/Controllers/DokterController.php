@@ -6,6 +6,7 @@ use App\Models\Dokter;
 use App\Http\Controllers\Controller;
 use App\Models\DokterModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class DokterController extends Controller
 {
@@ -16,7 +17,7 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $dk = DokterModel::all();
+        $dk = DokterModel::paginate(5);
         return view('dokter.dokter')
             ->with('dk', $dk);
     }

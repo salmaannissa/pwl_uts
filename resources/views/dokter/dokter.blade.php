@@ -55,7 +55,9 @@
                     @endif
                 </tbody>
             </table>
+            <div class="pagination justify-content-end mt-2">  {{ $dk->withQueryString()->links() }}</div>
         </div>
     </div>
+    
 </section>
 @endsection
