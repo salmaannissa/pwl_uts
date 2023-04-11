@@ -16,7 +16,16 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jdw = JadwalModel::paginate(5);
+        if(\Illuminate\Support\Facades\Request::get('query') !== null){
+            $query = \Illuminate\Support\Facades\Request::get('query');
+            $jdw = JadwalModel::where('kode_dokter', 'LIKE', '%'.$query.'%')
+            ->orWhere('kode_jadwal', 'LIKE', '%'.$query.'%')
+            ->orWhere('hari', 'LIKE', '%'.$query.'%')
+            ->orWhere('jam', 'LIKE', '%'.$query.'%')
+            ->paginate(5);
+        } else {
+            $jdw = JadwalModel::paginate(5);
+        }
         return view('dokter.jadwal')
             ->with('jdw', $jdw);
     }

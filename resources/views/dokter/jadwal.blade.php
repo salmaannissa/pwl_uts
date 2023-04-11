@@ -13,6 +13,27 @@
             <a href="{{url('/jadwal/create')}}" class="btn btn-sm btn-success my-2">
                 Tambah Data
             </a>
+            <form action="" method="GET" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            {{-- @if ($jdw->count())
+                <h1>Hasil Pencarian untuk "{{ $query }}"</h1>
+                <ul>
+                @foreach ($jdw as $post)
+                    <li>
+                        <a href="{{ route('jadwal', $post->id) }}">
+                            {{ $post->kode_jadwal }}
+                            {{ $post->kode_dokter }}
+                            {{ $post->hari }}
+                            {{ $post->jam }}
+                        </a>
+                    </li>
+                @endforeach
+                </ul>
+            @else
+                <p>Tidak ada hasil pencarian untuk "{{ $query }}".</p>
+            @endif --}}
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
