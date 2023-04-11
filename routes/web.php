@@ -23,15 +23,13 @@ use Illuminate\Support\Facades\Route;
   //  return view('welcome');
 //});
 
-
-Route::get('/', [DashboardController::class, 'index']);
-Route::resource('/dokter', DokterController::class)->parameter('dokter', 'id');
-Route::resource('/pasien', PasienController::class)->parameter('pasien', 'id');
-Route::resource('/jadwal', JadwalController::class)->parameter('jadwal', 'id');
 Auth::routes();
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::middleware(['auth'])->group(function(){
-  
+  Route::get('/dashboard', [DashboardController::class, 'index']);
+  Route::resource('/dokter', DokterController::class)->parameter('dokter', 'id');
+  Route::resource('/pasien', PasienController::class)->parameter('pasien', 'id');
+  Route::resource('/jadwal', JadwalController::class)->parameter('jadwal', 'id');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
