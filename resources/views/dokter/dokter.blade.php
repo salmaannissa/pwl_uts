@@ -13,6 +13,29 @@
             <a href="{{url('/dokter/create')}}" class="btn btn-sm btn-success my-2">
                 Tambah Data
             </a>
+            <form action="" method="GET" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            {{-- @if ($dk->count())
+                <h1>Hasil Pencarian untuk "{{ $query }}"</h1>
+                <ul>
+                @foreach ($dk as $post)
+                    <li>
+                        <a href="{{ route('dokter', $post->id) }}">
+                            {{ $post->kode_dokter }}
+                            {{ $post->nama_dokter }}
+                            {{ $post->spesialis }}
+                            {{ $post->hp }}
+                            {{ $post->alamat }}
+                            {{ $post->jk }}
+                        </a>
+                    </li>
+                @endforeach
+                </ul>
+            @else
+            <p>Tidak ada hasil pencarian untuk "{{ $query }}".</p>
+            @endif --}}
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>

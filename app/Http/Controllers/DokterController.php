@@ -17,7 +17,19 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $dk = DokterModel::paginate(5);
+        if(\Illuminate\Support\Facades\Request::get('query') !== null){
+            $query = \Illuminate\Support\Facades\Request::get('query');
+            $dk = DokterModel::where('kode_dokter', 'LIKE', '%'.$query.'%')
+            ->orWhere('nama_dokter', 'LIKE', '%'.$query.'%')
+            ->orWhere('spesialis', 'LIKE', '%'.$query.'%')
+            ->orWhere('hp', 'LIKE', '%'.$query.'%')
+            ->orWhere('alamat', 'LIKE', '%'.$query.'%')
+            ->orWhere('jk', 'LIKE', '%'.$query.'%')
+            ->paginate(5);
+        } else {
+            $dk = DokterModel::paginate(5);
+        }
+        
         return view('dokter.dokter')
             ->with('dk', $dk);
     }
