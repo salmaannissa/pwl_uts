@@ -16,7 +16,7 @@ class PasienController extends Controller
      */
     public function index()
     {
-        $ps = PasienModel::all();
+        $ps = PasienModel::paginate(5);
         return view('pasien.pasien')
             ->with('ps', $ps);
     }
