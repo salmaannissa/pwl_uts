@@ -23,8 +23,8 @@
                 <span class="error invalid-feedback">{{ $message }} </span>
               @enderror
             </div>
-            <div class="form-group">
-              <label>Hari</label>
+              <div class="form-group">
+                <label>Hari</label>
               <input class="form-control @error('hari') is-invalid @enderror" value="{{ isset($jdw)? $jdw->hari :old('hari') }}" name="hari" type="text"/>
               @error('hari')
                 <span class="error invalid-feedback">{{ $message }} </span>

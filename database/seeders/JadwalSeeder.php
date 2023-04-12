@@ -25,7 +25,7 @@ class JadwalSeeder extends Seeder
             [
                 'kode_Jadwal' =>'JD102',
                 'hari' =>'Selasa',
-                'jam' =>'09:00-11:00 WIB',
+                'jam' =>'10:00-12:00 WIB',
                 'kode_dokter' =>'DS101',
             ],
             [
@@ -37,7 +37,7 @@ class JadwalSeeder extends Seeder
             [
                 'kode_Jadwal' =>'JD104',
                 'hari' =>'Kamis',
-                'jam' =>'09:00-11:00 WIB',
+                'jam' =>'10:00-12:00 WIB',
                 'kode_dokter' =>'DS102',
             ],
             [
@@ -49,7 +49,7 @@ class JadwalSeeder extends Seeder
             [
                 'kode_Jadwal' =>'JD106',
                 'hari' =>'Sabtu',
-                'jam' =>'09:00-11:00 WIB',
+                'jam' =>'07:00-14:00 WIB',
                 'kode_dokter' =>'DS104',
             ],
         ]);
