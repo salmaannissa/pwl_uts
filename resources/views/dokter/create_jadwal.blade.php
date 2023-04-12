@@ -23,9 +23,18 @@
                 <span class="error invalid-feedback">{{ $message }} </span>
               @enderror
             </div>
-              <div class="form-group">
-                <label>Hari</label>
-              <input class="form-control @error('hari') is-invalid @enderror" value="{{ isset($jdw)? $jdw->hari :old('hari') }}" name="hari" type="text"/>
+            <div class="form-group">
+              <label>Hari</label>
+              <select class="form-control @error('hari') is-invalid @enderror" name="hari" type="text">
+                <option value=""> --Pilih Hari -- </option>
+                <option value="Senin"> Senin </option>
+                <option value="Selasa"> Selasa </option>
+                <option value="Rabu"> Rabu </option>
+                <option value="Kamis"> Kamis </option>
+                <option value="Jumat"> Jumat </option>
+                <option value="Sabtu"> Sabtu </option>
+                <option value="Minggu"> Minggu </option>
+              </select>
               @error('hari')
                 <span class="error invalid-feedback">{{ $message }} </span>
               @enderror
