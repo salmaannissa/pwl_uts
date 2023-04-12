@@ -13,7 +13,9 @@
           <form method="POST" action="{{ $url_form }}">
             @csrf
             {!!(isset($dk))? method_field('PUT') : '' !!}
-
+            @error('kode_dokter')
+              <small class="text-danger">{{ $message }}</small>
+            @enderror
             <div class="form-group">
               <label>Kode Dokter</label>
               <input class="form-control @error('') is-invalid @enderror" value="{{ isset($dk)? $dk->kode_dokter : old('kode_dokter') }}" name="kode_dokter" type="text" />

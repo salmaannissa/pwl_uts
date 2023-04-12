@@ -14,6 +14,10 @@
             @csrf
             {!!(isset($ps))? method_field('PUT') : '' !!}
 
+            @error('kode_pasien')
+              <small class="text-danger">{{ $message }}</small>
+            @enderror
+            <div class="form-group">
             <div class="form-group">
               <label>Kode Pasien</label>
               <input class="form-control @error('') is-invalid @enderror" value="{{ isset($ps)? $ps->kode_pasien : old('kode_pasien') }}" name="kode_pasien" type="text" />
@@ -21,7 +25,6 @@
                 <span class="error invalid-feedback">{{ $message }} </span>
               @enderror
             </div>
-            <div class="form-group">
               <label>Nama Pasien</label>
               <input class="form-control @error('nama_pasien') is-invalid @enderror" value="{{ isset($ps)? $ps->nama_pasien :old('nama_pasien') }}" name="nama_pasien" type="text"/>
               @error('nama_pasien')
