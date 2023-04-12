@@ -6,7 +6,7 @@
     <!-- Default Box-->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"> Halo Selamat Datang </h3>
+            <h3 class="card-title"> <b>Selamat Datang Admin</b> </h3>
             <br>
         </div>
     </div>
