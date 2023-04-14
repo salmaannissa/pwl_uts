@@ -18,7 +18,7 @@
             @enderror
             <div class="form-group">
               <label>Kode Jadwal</label>
-              <input class="form-control @error('') is-invalid @enderror" value="{{ isset($jdw)? $jdw->kode_jadwal : old('kode_jadwal') }}" name="kode_jadwal" type="text" />
+              <input class="form-control @error('') is-invalid @enderror" name="kode_jadwal" type="text" value="{{ isset($jdw)? $jdw->kode_jadwal : old('kode_jadwal') }}"/>
               @error('kode_jadwal')
                 <span class="error invalid-feedback">{{ $message }} </span>
               @enderror
@@ -27,13 +27,13 @@
               <label>Hari</label>
               <select class="form-control @error('hari') is-invalid @enderror" name="hari" type="text">
                 <option value=""> --Pilih Hari -- </option>
-                <option value="Senin"> Senin </option>
-                <option value="Selasa"> Selasa </option>
-                <option value="Rabu"> Rabu </option>
-                <option value="Kamis"> Kamis </option>
-                <option value="Jumat"> Jumat </option>
-                <option value="Sabtu"> Sabtu </option>
-                <option value="Minggu"> Minggu </option>
+                <option value="Senin" {{ old('hari', $jdw->hari) == 'Senin' ? 'selected' : '' }}> Senin </option>
+                <option value="Selasa" {{ old('hari', $jdw->hari) == 'Selasa' ? 'selected' : '' }}> Selasa </option>
+                <option value="Rabu" {{ old('hari', $jdw->hari) == 'Rabu' ? 'selected' : '' }}> Rabu </option>
+                <option value="Kamis" {{ old('hari', $jdw->hari) == 'Kamis' ? 'selected' : '' }}> Kamis </option>
+                <option value="Jumat" {{ old('hari', $jdw->hari) == 'Jumat' ? 'selected' : '' }}> Jumat </option>
+                <option value="Sabtu" {{ old('hari', $jdw->hari) == 'Sabtu' ? 'selected' : '' }}> Sabtu </option>
+                <option value="Minggu" {{ old('hari', $jdw->hari) == 'Minggu' ? 'selected' : '' }}> Minggu </option>
               </select>
               @error('hari')
                 <span class="error invalid-feedback">{{ $message }} </span>
