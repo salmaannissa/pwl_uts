@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rumah Sakit Bhakti Wijaya | Log in</title>
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <title>Sistem Informasi Manajemen | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html">Rumah Sakit<b> <br> Bhakti Wijaya</b></a>
+    <a href="../../index2.html">SPK<b> <br>Sistem Pendukung Keputusan</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

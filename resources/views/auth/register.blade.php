@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rumah Sakit Bhakti Wijaya | Registration Page</title>
+    <title> Sistem Pendukung Keputusan | Registration Page</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -20,7 +20,7 @@
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="../../index2.html">Rumah Sakit<b> <br> Bhakti Wijaya</b></a>
+            <a href="../../index2.html">SPK<b> <br> Sistem Pendukung Keputusan</b></a>
         </div>
 
         <div class="card">

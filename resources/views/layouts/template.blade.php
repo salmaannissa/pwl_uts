@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Rumah Sakit Bhakti Wijaya</title>
+  <title> Sistem Pendukung Keputusan </title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,7 +25,7 @@
     <a href="{{asset('assets/index3.html')}}" class="brand-link">
       <img src="{{asset('assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" 
       style="opacity: .8">
-      <span class="brand-text font-weight-light">Bhakti Wijaya</span>
+      <span class="brand-text font-weight-light">SPK</span>
     </a>
     <!-- Sidebar -->
     @include('layouts.sidebar')
