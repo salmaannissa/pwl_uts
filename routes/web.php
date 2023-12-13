@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\alternatifController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AValueController;
+use App\Http\Controllers\CpiController;
+use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalController;
@@ -27,9 +31,25 @@ Auth::routes();
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::middleware(['auth'])->group(function(){
   Route::get('/dashboard', [DashboardController::class, 'index']);
-  Route::resource('/dokter', DokterController::class)->parameter('dokter', 'id');
-  Route::resource('/pasien', PasienController::class)->parameter('pasien', 'id');
-  Route::resource('/jadwal', JadwalController::class)->parameter('jadwal', 'id');
+
 });
+
+//alternatif
+Route::get('/alternatifs', [alternatifController::class, 'index']);
+Route::get('/alternatif/{id}', [alternatifController::class, 'edit']);
+Route::put('/edit_alternatif/{id}', [alternatifController::class, 'update']);
+
+//criteria
+Route::get('/criterias', [CriteriaController::class, 'index']);
+Route::get('/criteria/{id}', [CriteriaController::class, 'edit']);
+Route::put('/edit_criteria/{id}', [CriteriaController::class, 'update']);
+
+//nilai
+Route::get('/avalue', [AValueController::class, 'index']);
+Route::get('/value/{id}', [AValueController::class, 'showValue']);
+Route::put('/edit_value/{id}', [AValueController::class, 'edit']);
+
+//perhitungan
+Route::get('/calculate', [CpiController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
