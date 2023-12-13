@@ -5,81 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\Alternatif;
 use Illuminate\Http\Request;
 
-class AlternatifController extends Controller
+class alternatifController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
     public function index()
     {
-        //
+        $alternatifs = Alternatif::paginate(10);
+        return view('alternatif', compact('alternatifs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function edit($id)
     {
-        //
+        $alternatif = Alternatif::find($id);
+
+        return view('editAlternatif', compact('alternatif'));
+        // dd($criteria);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(Request $request, $id)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\alternatif  $alternatif
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Alternatif $alternatif)
-    {
-        //
-    }
+        Alternatif::find($id)->update($request->all());
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\alternatif  $alternatif
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Alternatif $alternatif)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\alternatif  $alternatif
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, alternatif $alternatif)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\alternatif  $alternatif
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Alternatif $alternatif)
-    {
-        //
+        return redirect('/alternatifs');
     }
 }
